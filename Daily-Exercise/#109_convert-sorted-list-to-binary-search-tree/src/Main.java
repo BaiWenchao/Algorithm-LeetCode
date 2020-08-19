@@ -1,5 +1,3 @@
-import com.sun.org.apache.xerces.internal.xs.ShortList;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,49 +45,104 @@ class TreeNode {
     }
 }
 
-class Solution {
+// 链表转列表法
+//class Solution {
+//
+//    private List<Integer> list = new ArrayList<>();
+//
+//    public TreeNode sortedListToBST(ListNode head) {
+//        // deal with the null LinkedList
+//        if (head == null) return null;
+//        // construct the ArrayList
+//        list.add(head.val);
+//        while (head.next != null) {
+//            head = head.next;
+//            list.add(head.val);
+//        }
+//        // do the job recursively
+//        return treeConstructor(0, list.size());
+//    }
+//
+//    public TreeNode treeConstructor(int left, int right) {
+//        // base case:
+//        if (left == right) return null;
+//
+//        int pos = (left+right-1)/2;
+//        TreeNode parent = new TreeNode(list.get(pos));
+//
+//        parent.left = treeConstructor(left,pos);
+//        parent.right = treeConstructor(pos+1, right);
+//
+//        return parent;
+//    }
+//}
 
-    List<Integer> list = new ArrayList<>();
+// 快慢指针法
+//class Solution {
+//    public TreeNode sortedListToBST(ListNode head) {
+//        return treeConstructor(head, null);
+//    }
+//
+//    public TreeNode treeConstructor(ListNode left, ListNode right) {
+//        if (left == right) return null;
+//        ListNode mid = findListNode(left, right);
+//        TreeNode parent = new TreeNode(mid.val);
+//
+//        parent.left = treeConstructor(left, mid);
+//        parent.right = treeConstructor(mid.next, right);
+//
+//        return parent;
+//    }
+//
+//    public ListNode findListNode(ListNode left, ListNode right) {
+//        ListNode fast = left;
+//        ListNode slow = left;
+//
+//        while (fast != right && fast.next != right) {
+//            fast = fast.next.next;
+//            slow = slow.next;
+//        }
+//
+//        return slow;
+//    }
+//}
 
+
+// 中序遍历法：
+class  Solution {
+    private ListNode globalHead;
     public TreeNode sortedListToBST(ListNode head) {
-        if (head == null) return null;
-        list.add(head.val);
-        while(head.next != null) {
-            list.add(head.next.val);
+        globalHead = head;
+        int length = getListLength(head);
+        TreeNode root = treeConstructor(0, length);
+
+        inOrder(root);
+        return root;
+    }
+    public TreeNode treeConstructor(int left, int right) {
+        if (left == right) return null;
+        TreeNode parent = new TreeNode();
+        parent.left = treeConstructor(left, (left+right-1)/2);
+        parent.right = treeConstructor((left+right-1)/2+1, right);
+        return parent;
+    }
+    public void inOrder(TreeNode root) {
+        if (root == null) return;
+
+        inOrder(root.left);
+        root.val = globalHead.val;
+        globalHead = globalHead.next;
+        inOrder(root.right);
+    }
+    public int getListLength(ListNode head) {
+        if (head == null) return 0;
+        int count = 1;
+        while (head.next != null) {
+            count++;
             head = head.next;
         }
 
-        return treeConstructor(0, list.size(), null);
-    }
-
-    public TreeNode treeConstructor(int l, int r, TreeNode parent) {
-        if (l == r) return null;
-
-        int pos = (l+r-1)/2, pivot = list.get(pos);
-        if (parent == null) parent = new TreeNode(pivot);
-
-
-        if (l+1 == r) return parent;
-
-        if (l+2 == r) {
-            if (parent.val == list.get(l)) {
-                parent.right = new TreeNode(list.get(r-1));
-            } else {
-                parent.left = new TreeNode(list.get(l));
-            }
-
-            return parent;
-        }
-
-        TreeNode lc = new TreeNode(list.get((l+pos-1)/2));
-        TreeNode rc = new TreeNode(list.get((r+pos)/2));
-        parent.left = lc;
-        parent.right = rc;
-
-        treeConstructor(l, pos, lc);
-        treeConstructor(pos+1, r, rc);
-
-        return parent;
+        return count;
     }
 }
 
