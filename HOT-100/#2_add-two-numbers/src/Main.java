@@ -19,72 +19,95 @@ class ListNode {
 
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        return adder(null, l1, l2, 0);
-    }
+        ListNode p = l1, q = l2, dummyHead = new ListNode(0), crt = dummyHead;
+        int carry = 0;
 
-    public ListNode adder(ListNode preNode, ListNode l1, ListNode l2, int carry) {
-        if (l1 == null && l2 == null) {
-            if (carry==0) {
-                return null;
-            } else {
-                preNode.next = new ListNode(carry);
-                return preNode.next;
-            }
+        while (p != null || q != null) {
+            int x = (p == null) ? 0 : p.val;
+            int y = (q == null) ? 0 : q.val;
+
+            int sum = x + y + carry;
+            carry = sum / 10;
+            crt.next = new ListNode(sum%10);
+            crt = crt.next;
+
+            if (p != null) p = p.next;
+            if (q != null) q = q.next;
         }
 
-        int ans = carry;
-        if (l1 == null) {
-            int tmp = carry+l2.val;
-            int newCarry = tmp/10;
-            l2.val = tmp%10;
-            preNode.next = l2;
-            if (tmp>9) {
-                while (newCarry != 0) {
-                    if (l2.next == null) {
-                        l2.next = new ListNode(newCarry);
-                        newCarry = 0;
-                    } else {
-                        l2.next.val += newCarry;
-                        newCarry = l2.next.val/10;
-                        l2.next.val %= 10;
-                        l2 = l2.next;
-                    }
-                }
-            }
-            return l2.next;
-        } else {
-            ans += l1.val;
-        }
+        if (carry != 0) crt.next = new ListNode(carry);
 
-        if (l2 == null) {
-            l1.val = ans%10;
-            int newCarry = ans/10;
-            if (ans>9) {
-                while (newCarry != 0) {
-                    if (l1.next == null) {
-                        l1.next = new ListNode(newCarry);
-                        newCarry = 0;
-                    } else {
-                        l1.next.val += newCarry;
-                        newCarry = l1.next.val/10;
-                        l1.next.val %= 10;
-                        l1 = l1.next;
-                    }
-                }
-            }
-            return l1;
-        } else {
-            ans += l2.val;
-        }
-
-        int newCarry = ans/10;
-        l1.val = ans%10;
-
-        adder(l1, l1.next, l2.next, newCarry);
-
-        return l1;
+        return dummyHead.next;
     }
 }
+
+
+
+//class Solution {
+//    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+//        return adder(null, l1, l2, 0);
+//    }
+//    public ListNode adder(ListNode preNode, ListNode l1, ListNode l2, int carry) {
+//        if (l1 == null && l2 == null) {
+//            if (carry==0) {
+//                return null;
+//            } else {
+//                preNode.next = new ListNode(carry);
+//                return preNode.next;
+//            }
+//        }
+//        int ans = carry;
+//        if (l1 == null) {
+//            int tmp = carry+l2.val;
+//            int newCarry = tmp/10;
+//            l2.val = tmp%10;
+//            preNode.next = l2;
+//            if (tmp>9) {
+//                while (newCarry != 0) {
+//                    if (l2.next == null) {
+//                        l2.next = new ListNode(newCarry);
+//                        newCarry = 0;
+//                    } else {
+//                        l2.next.val += newCarry;
+//                        newCarry = l2.next.val/10;
+//                        l2.next.val %= 10;
+//                        l2 = l2.next;
+//                    }
+//                }
+//            }
+//            return l2.next;
+//        } else {
+//            ans += l1.val;
+//        }
+//
+//        if (l2 == null) {
+//            l1.val = ans%10;
+//            int newCarry = ans/10;
+//            if (ans>9) {
+//                while (newCarry != 0) {
+//                    if (l1.next == null) {
+//                        l1.next = new ListNode(newCarry);
+//                        newCarry = 0;
+//                    } else {
+//                        l1.next.val += newCarry;
+//                        newCarry = l1.next.val/10;
+//                        l1.next.val %= 10;
+//                        l1 = l1.next;
+//                    }
+//                }
+//            }
+//            return l1;
+//        } else {
+//            ans += l2.val;
+//        }
+//        int newCarry = ans/10;
+//        l1.val = ans%10;
+//        adder(l1, l1.next, l2.next, newCarry);
+//        return l1;
+//    }
+//}
+
+
 
 
 public class Main {

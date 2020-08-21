@@ -20,13 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4aeff41-1d1f-4c29-94b5-89ff64047002" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Daily-Exercise/#111_minimum-depth-of-binary-tree/#111_minimum-depth-of-binary-tree.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Daily-Exercise/#111_minimum-depth-of-binary-tree/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Daily-Exercise/#111_minimum-depth-of-binary-tree/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Daily-Exercise/#111_minimum-depth-of-binary-tree/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Daily-Exercise/#111_minimum-depth-of-binary-tree/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Daily-Exercise/#111_minimum-depth-of-binary-tree/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,12 +48,15 @@
     </option>
   </component>
   <component name="ProjectId" id="1gMop8KdmATbrBNAj15agF2pSOd" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -98,7 +96,7 @@
       <option name="presentableId" value="Default" />
       <updated>1597934001549</updated>
       <workItem from="1597934003767" duration="5456000" />
-      <workItem from="1597994892782" duration="288000" />
+      <workItem from="1597994892782" duration="1870000" />
     </task>
     <servers />
   </component>
@@ -115,8 +113,16 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="549" y="153" key="FileChooserDialogImpl" timestamp="1597994984924">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="153" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597994984924" />
     <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1597939473266">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -149,5 +155,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1597939473267" />
+    <state x="178" y="22" key="new project wizard" timestamp="1597995047344">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="178" y="22" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1597995047344" />
   </component>
 </project>
