@@ -15,38 +15,17 @@ class ListNode {
 }
 
 class Solution {
-
-    ListNode ans = null;
-
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        Stack<ListNode> s1 = new Stack<>();
-        Stack<ListNode> s2 = new Stack<>();
         if (headA == null || headB == null) return null;
-        s1.push(headA); s2.push(headB);
-        while (headA.next != null) {
-            s1.push(headA.next);
-            headA = headA.next;
-        }
-        while (headB.next != null) {
-            s2.push(headB.next);
-            headB = headB.next;
+        ListNode l1 = headA, l2 = headB;
+        while (l1 != l2) {
+            l1 = l1==null ? headB : l1.next;
+            l2 = l2==null ? headA : l2.next;
         }
 
-        while (!s1.isEmpty() && !s2.isEmpty()) {
-            ListNode n1 = s1.pop();
-            ListNode n2 = s2.pop();
-            if (n1.val == n2.val) {
-                ans = n1;
-                if (s1.pop().val != s2.pop().val) {
-                    return n1;
-                } else {
-                    ans = null;
-                }
-            }
-        }
-
-        return ans;
+        return l1;
     }
+
 }
 
 public class Main {
